@@ -24,6 +24,7 @@ app.get("/", function(incoming_request, response) {
   var feedparser = new FeedParser();
 
   var collection = [];
+  var limitReached = false;
 
   req.on("error", function(error) {
     console.error(error);
@@ -47,8 +48,13 @@ app.get("/", function(incoming_request, response) {
     var stream = this; // `this` is `feedparser`, which is a stream
     var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
     var item;
+    
     //Add articles to collection
-    while ((item = stream.read())) {
+    while ((item = stream.read()) && !limitReached) {
+      if(collection.length >= 10)
+        limitReached = true;
+        break;
+      }
       collection.push(item); //array of objects
     }
   });
