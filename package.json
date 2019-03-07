@@ -1,7 +1,7 @@
 {
   "name": "feed-to-json-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "Parse RSS, Atom and RDF feeds to JSON",
   "main": "index.js",
   "scripts": {
     "start": "node app.js"
@@ -13,6 +13,6 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "request": "^2.79.0",
-    "feedparser":"2.2.0"
+    "feedparser": "2.2.9"
   }
 }
