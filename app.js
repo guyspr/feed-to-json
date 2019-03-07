@@ -51,7 +51,7 @@ app.get("/", function(incoming_request, response) {
     
     //Add articles to collection
     while ((item = stream.read()) && !limitReached) {
-      if(collection.length >= 10)
+      if(collection.length >= 10){
         limitReached = true;
         break;
       }
